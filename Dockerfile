@@ -5,6 +5,7 @@ WORKDIR /app
 
 # Копируем файл со списком зависимостей и устанавливаем их + Gunicorn
 COPY requirements.txt .
+COPY .env .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Копируем остальной код

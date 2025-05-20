@@ -6,6 +6,8 @@ services:
     container_name: school_bell_system_container
     ports:
       - "1900:1900"
+    env_file:
+      - .env
     volumes:
       - ./instance:/app/instance
     restart: unless-stopped
