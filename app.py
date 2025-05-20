@@ -17,6 +17,8 @@ class Bell(db.Model):
     end_time = db.Column(db.Time, nullable=False)
     is_active = db.Column(db.Boolean, default=True)
 
+with app.app_context():
+    db.create_all()
 
 DAYS = ['Понедельник', 'Вторник', 'Среда',
         'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
@@ -106,6 +108,4 @@ def toggle_bell(id):
 
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
