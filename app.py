@@ -6,8 +6,13 @@ import os
 from datetime import time
 
 load_dotenv()
+DATABASE_URI = os.getenv('DATABASE_URI')
+
+if not DATABASE_URI:
+    DATABASE_URI = 'sqlite:///bells.db'
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bells.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 db = SQLAlchemy(app)
